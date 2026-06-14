@@ -16,12 +16,26 @@ Grab the latest installer for your OS from the [**Releases**](../../releases/lat
 
 ## First launch — unsigned build notice
 
-These builds are **not code-signed** yet, so the OS will warn on first launch.
+These builds are **not notarized**, so the OS warns on first launch.
 
-- **macOS**: right-click the app → **Open** → confirm. Or run
-  `xattr -dr com.apple.quarantine "/Applications/Team Secrets.app"`.
-- **Windows**: SmartScreen → **More info** → **Run anyway**.
-- **Linux**: `chmod +x` the AppImage, or install the `.deb`.
+### macOS — if you see "Team Secrets is damaged and can't be opened"
+
+The app is **not** damaged. macOS shows this because of the quarantine flag, and
+**right-click → Open / "Open Anyway" do not clear it.** Run this once:
+
+```sh
+xattr -dr com.apple.quarantine "/Applications/Team Secrets.app"
+```
+
+(Drag the app into `/Applications` first.) Then open it normally.
+
+### Windows
+
+SmartScreen → **More info** → **Run anyway**.
+
+### Linux
+
+`chmod +x` the AppImage, or install the `.deb`.
 
 ## Updates
 
